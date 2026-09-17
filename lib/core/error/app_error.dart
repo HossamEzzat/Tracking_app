@@ -1,4 +1,4 @@
-abstract class AppError {
+sealed class AppError {
  final Exception? exception;
  final String message;
   AppError(this.exception, this.message);
