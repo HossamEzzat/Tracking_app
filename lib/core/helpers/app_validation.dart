@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:tracking_app/core/localization/local_key.dart';
 
 class AppValidators {
   AppValidators._();
@@ -23,7 +24,7 @@ class AppValidators {
     required String field,
   }) {
     if (value == null || value.trim().isEmpty) {
-      return 'validation.field_is_required'.tr(
+      return LocaleKeys.validationFieldIsRequired.tr(
         namedArgs: {
           'field': field,
         },
@@ -35,35 +36,37 @@ class AppValidators {
 
   static String? usernameValidator(
     String? value, {
-    String field = 'Name',
+    String? field,
   }) {
+    final fieldName = field ?? LocaleKeys.name.tr();
+
     if (value == null || value.trim().isEmpty) {
-      return 'validation.field_is_required'.tr(
+      return LocaleKeys.validationFieldIsRequired.tr(
         namedArgs: {
-          'field': field,
+          'field': fieldName,
         },
       );
     }
 
     if (value.trim().length < 4) {
-      return 'validation.field_min_length'.tr(
+      return LocaleKeys.validationFieldMinLength.tr(
         namedArgs: {
-          'field': field,
+          'field': fieldName,
           'length': '4',
         },
       );
     }
 
     if (value.contains(' ')) {
-      return 'validation.field_no_spaces'.tr(
+      return LocaleKeys.validationFieldNoSpaces.tr(
         namedArgs: {
-          'field': field,
+          'field': fieldName,
         },
       );
     }
 
     if (!_usernamePattern.hasMatch(value)) {
-      return 'validation.only_letters_numbers_underscore'.tr();
+      return LocaleKeys.validationOnlyLettersNumbersUnderscore.tr();
     }
 
     return null;
@@ -71,11 +74,11 @@ class AppValidators {
 
   static String? emailValidator(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'validation.please_enter_your_email'.tr();
+      return LocaleKeys.validationPleaseEnterYourEmail.tr();
     }
 
     if (!_emailPattern.hasMatch(value.trim())) {
-      return 'validation.please_enter_valid_email'.tr();
+      return LocaleKeys.validationPleaseEnterValidEmail.tr();
     }
 
     return null;
@@ -83,11 +86,11 @@ class AppValidators {
 
   static String? passwordValidator(String? value) {
     if (value == null || value.isEmpty) {
-      return 'validation.password_is_required'.tr();
+      return LocaleKeys.validationPasswordIsRequired.tr();
     }
 
     if (!_passwordPattern.hasMatch(value)) {
-      return 'validation.password_requirement'.tr();
+      return LocaleKeys.validationPasswordRequirement.tr();
     }
 
     return null;
@@ -95,11 +98,11 @@ class AppValidators {
 
   static String? registrationPasswordValidator(String? value) {
     if (value == null || value.isEmpty) {
-      return 'validation.password_is_required'.tr();
+      return LocaleKeys.validationPasswordIsRequired.tr();
     }
 
     if (!_registrationPasswordPattern.hasMatch(value)) {
-      return 'validation.registration_password_requirement'.tr();
+      return LocaleKeys.validationRegistrationPasswordRequirement.tr();
     }
 
     return null;
@@ -110,11 +113,11 @@ class AppValidators {
     String password,
   ) {
     if (value == null || value.isEmpty) {
-      return 'validation.confirm_password_is_required'.tr();
+      return LocaleKeys.validationConfirmPasswordIsRequired.tr();
     }
 
     if (value != password) {
-      return 'validation.passwords_do_not_match'.tr();
+      return LocaleKeys.validationPasswordsDoNotMatch.tr();
     }
 
     return null;
@@ -122,11 +125,11 @@ class AppValidators {
 
   static String? phoneValidator(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'validation.phone_number_is_required'.tr();
+      return LocaleKeys.validationPhoneNumberIsRequired.tr();
     }
 
     if (!_phonePattern.hasMatch(value.trim())) {
-      return 'validation.valid_egyptian_phone'.tr();
+      return LocaleKeys.validationValidEgyptianPhone.tr();
     }
 
     return null;
@@ -134,11 +137,11 @@ class AppValidators {
 
   static String? resetPasswordValidator(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'validation.password_is_required'.tr();
+      return LocaleKeys.validationPasswordIsRequired.tr();
     }
 
     if (!_registrationPasswordPattern.hasMatch(value)) {
-      return 'validation.reset_password_requirement'.tr();
+      return LocaleKeys.validationResetPasswordRequirement.tr();
     }
 
     return null;
@@ -146,11 +149,11 @@ class AppValidators {
 
   static String? otpValidator(String? value) {
     if (value == null || value.isEmpty) {
-      return 'validation.otp_required'.tr();
+      return LocaleKeys.validationOtpRequired.tr();
     }
 
     if (value.length != 6) {
-      return 'validation.invalid_otp'.tr();
+      return LocaleKeys.validationInvalidOtp.tr();
     }
 
     return null;
@@ -158,13 +161,13 @@ class AppValidators {
 
   static String? validateAddress(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'validation.required'.tr();
+      return LocaleKeys.validationRequired.tr();
     }
 
     if (value.trim().length < 5) {
-      return 'validation.field_min_length'.tr(
+      return LocaleKeys.validationFieldMinLength.tr(
         namedArgs: {
-          'field': 'Address',
+          'field': LocaleKeys.address.tr(),
           'length': '5',
         },
       );
@@ -175,13 +178,13 @@ class AppValidators {
 
   static String? validateRecipientName(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'validation.required'.tr();
+      return LocaleKeys.validationRequired.tr();
     }
 
     if (value.trim().length < 2) {
-      return 'validation.field_min_length'.tr(
+      return LocaleKeys.validationFieldMinLength.tr(
         namedArgs: {
-          'field': 'Name',
+          'field': LocaleKeys.name.tr(),
           'length': '2',
         },
       );
@@ -192,7 +195,7 @@ class AppValidators {
 
   static String? validateCity(String? value) {
     if (value == null || value.isEmpty) {
-      return 'validation.required'.tr();
+      return LocaleKeys.validationRequired.tr();
     }
 
     return null;
@@ -200,7 +203,7 @@ class AppValidators {
 
   static String? validateArea(String? value) {
     if (value == null || value.isEmpty) {
-      return 'validation.required'.tr();
+      return LocaleKeys.validationRequired.tr();
     }
 
     return null;
@@ -208,14 +211,14 @@ class AppValidators {
 
   static String? validateVehicleNumber(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'validation.required'.tr();
+      return LocaleKeys.validationRequired.tr();
     }
 
     final vehicleNumberRegex =
         RegExp(r'^[A-Za-z0-9\u0621-\u064A]+$');
 
     if (!vehicleNumberRegex.hasMatch(value.trim())) {
-      return 'validation.valid_vehicle_number'.tr();
+      return LocaleKeys.validationValidVehicleNumber.tr();
     }
 
     return null;
@@ -223,17 +226,17 @@ class AppValidators {
 
   static String? validateNationalId(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'validation.required'.tr();
+      return LocaleKeys.validationRequired.tr();
     }
 
     final id = value.trim();
 
     if (!RegExp(r'^\d+$').hasMatch(id)) {
-      return 'validation.national_id_numbers_only'.tr();
+      return LocaleKeys.validationNationalIdNumbersOnly.tr();
     }
 
     if (id.length != 14) {
-      return 'validation.national_id_length'.tr();
+      return LocaleKeys.validationNationalIdLength.tr();
     }
 
     return null;

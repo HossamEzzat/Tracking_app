@@ -85,7 +85,9 @@
         "invalid_otp": "يرجى إدخال رمز تحقق صالح",
         "valid_vehicle_number": "أدخل رقم مركبة صحيح",
         "national_id_numbers_only": "الرقم القومي يجب أن يحتوي على أرقام فقط",
-        "national_id_length": "الرقم القومي يجب أن يتكون من 14 رقمًا"
+        "national_id_length": "الرقم القومي يجب أن يتكون من 14 رقمًا",
+        "name": "الاسم",
+        "address": "العنوان"
     },
     "nav": {
         "home": "الرئيسية",

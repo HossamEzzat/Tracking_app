@@ -85,7 +85,9 @@
         "invalid_otp": "Please enter a valid verification code",
         "valid_vehicle_number": "Enter a valid vehicle number",
         "national_id_numbers_only": "National ID must contain numbers only",
-        "national_id_length": "National ID must be 14 digits"
+        "national_id_length": "National ID must be 14 digits",
+        "name": "Name",
+        "address": "Address"
     },
     "nav": {
         "home": "Home",
