@@ -35,19 +35,7 @@ class AppButton extends StatelessWidget {
 
   Widget _buildPrimaryButton(AppColors colors) {
     return ElevatedButton(
-      onPressed: isLoading ? null : onPressed,
-      style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(vertical: 13.h),
-        backgroundColor: colors.pink,
-        foregroundColor: colors.white,
-        disabledBackgroundColor: colors.disabledButton,
-        disabledForegroundColor: colors.white,
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.r),
-        ),
-      ),
-      child: _buildChild(colors),
+      onPressed: isLoading ? null : onPressed,      child: _buildChild(colors),
     );
   }
 

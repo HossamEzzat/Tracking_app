@@ -30,6 +30,9 @@ extension GetItInjectableX on _i174.GetIt {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dioModule = _$DioModule();
     gh.factory<_i185.SafeCall>(() => _i185.SafeCall());
+    gh.lazySingleton<_i466.AuthSessionNotifier>(
+      () => _i466.AuthSessionNotifier(),
+    );
     gh.lazySingleton<_i36.TokenRefresher>(() => _i36.ApiTokenRefresher());
     gh.lazySingleton<_i964.TokenStorage>(
       () => _i964.SecureTokenStorage(gh<_i558.FlutterSecureStorage>()),
@@ -38,6 +41,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i466.AuthInterceptors(
         gh<_i964.TokenStorage>(),
         gh<_i36.TokenRefresher>(),
+        gh<_i466.AuthSessionNotifier>(),
       ),
     );
     gh.singleton<_i361.Dio>(

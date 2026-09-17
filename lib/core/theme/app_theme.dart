@@ -79,12 +79,15 @@ class AppTheme {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+       padding: EdgeInsets.symmetric(vertical: 13.h),
         backgroundColor: colors.pink,
-        padding: EdgeInsets.symmetric(vertical: 16.h),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50.r),
-        ),
+        foregroundColor: colors.white,
+        disabledBackgroundColor: colors.disabledButton,
+        disabledForegroundColor: colors.white,
         elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.r),
+        ),
       ),
     ),
   );
