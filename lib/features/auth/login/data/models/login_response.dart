@@ -1,25 +1,12 @@
 import 'package:tracking_app/features/auth/login/domain/entity/auth_entity.dart';
 
 class LoginResponse {
-  final bool isSuccess;
-  final int statusCode;
-  final String message;
   final LoginData data;
 
-  const LoginResponse({
-    required this.isSuccess,
-    required this.statusCode,
-    required this.message,
-    required this.data,
-  });
+  const LoginResponse({required this.data});
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) {
-    return LoginResponse(
-      isSuccess: json['isSuccess'] == true || json['success'] == true,
-      statusCode: _asInt(json['statusCode']),
-      message: json['message']?.toString() ?? '',
-      data: LoginData.fromJson(_dataMap(json['data'])),
-    );
+    return LoginResponse(data: LoginData.fromJson(_dataMap(json['data'])));
   }
 }
 

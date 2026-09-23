@@ -1,18 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:tracking_app/core/errors/api_exception.dart';
 import 'package:tracking_app/core/errors/app_error.dart';
 
 AppError errorParser(Exception exception) {
-  if (exception is ApiException) return _parseApiException(exception);
   if (exception is! DioException) return IgnoreError();
   if (exception.error is ForceLogin) return ForceLogin();
   return _parseDioException(exception);
-}
-
-AppError _parseApiException(ApiException exception) {
-  final fieldErrors = fieldErrorsMessage(exception.errors);
-  if (fieldErrors != null) return BadResponseError(fieldErrors);
-  return BadResponseError(exception.message, statusCode: exception.statusCode);
 }
 
 AppError _parseDioException(DioException exception) {

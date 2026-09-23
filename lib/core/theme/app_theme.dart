@@ -61,7 +61,7 @@ InputDecorationTheme _inputTheme(AppColors colors, BorderRadius radius) {
     fillColor: colors.white,
     contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
     labelStyle: TextStyle(color: colors.black, fontSize: 14.sp),
-    hintStyle: TextStyle(color: colors.grey.shade700, fontSize: 16.sp),
+    hintStyle: TextStyle(color: colors.grey, fontSize: 16.sp),
     errorStyle: TextStyle(color: colors.error, fontSize: 13.sp),
     border: _outline(radius, idle),
     enabledBorder: _outline(radius, idle),
@@ -93,7 +93,7 @@ CheckboxThemeData _checkboxTheme(AppColors colors) {
       if (states.contains(WidgetState.selected)) return colors.pink;
       return colors.white;
     }),
-    side: BorderSide(color: colors.grey.shade700, width: 1.4),
+    side: BorderSide(color: colors.grey, width: 1.4),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.r)),
   );
 }

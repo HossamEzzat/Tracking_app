@@ -11,26 +11,45 @@ class OnboardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: SafeArea(child: _content(context)));
+    return Scaffold(body: SafeArea(child: _body(context)));
+  }
+
+  Widget _body(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(minHeight: constraints.maxHeight),
+            child: _content(context),
+          ),
+        );
+      },
+    );
   }
 
   Widget _content(BuildContext context) {
-    final colors = context.colors;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _hero(),
-          const Spacer(),
-          _loginButton(context, colors),
-          SizedBox(height: 16.h),
-          _applyButton(context, colors),
-          SizedBox(height: 28.h),
-          Center(child: Text(AppString.appVersion, style: _versionStyle())),
-          SizedBox(height: 16.h),
-        ],
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [_hero(), _actions(context)],
       ),
+    );
+  }
+
+  Widget _actions(BuildContext context) {
+    final colors = context.colors;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _loginButton(context, colors),
+        SizedBox(height: 16.h),
+        _applyButton(context, colors),
+        SizedBox(height: 28.h),
+        Center(child: Text(AppString.appVersion, style: _versionStyle())),
+        SizedBox(height: 16.h),
+      ],
     );
   }
 
