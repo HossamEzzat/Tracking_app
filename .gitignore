@@ -33,6 +33,11 @@ migrate_working_dir/
 /build/
 /coverage/
 
+# Local API address. Not required in the repository.
+.env
+.env.*
+!.env.example
+
 # Symbolication related
 app.*.symbols
 
